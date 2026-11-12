@@ -1,0 +1,14 @@
+numpy
+pandas
+matplotlib
+seaborn
+plotly
+scikit-learn
+xgboost
+lightgbm
+joblib
+yfinance
+flask
+flask-cors
+pyngrok
+jupyter
