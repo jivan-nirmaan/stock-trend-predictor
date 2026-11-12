@@ -71,7 +71,7 @@ Beginner investors often ask one simple question: *Will this stock go up or down
 ```
 stock-trend-predictor/
 ├── stock_trend_classifier.ipynb   # Colab notebook: EDA, training, Flask API
-├── stock_predictor_page.html      # Web interface
+├── index.html                     # Web interface
 ├── indian_stocks_real.csv         # Dataset
 ├── requirements.txt               # Python dependencies
 ├── images/                        # Screenshots used in this README
@@ -88,7 +88,7 @@ The backend runs in Google Colab and the web page connects to it through an ngro
 4. In the last code cell, paste it into `NGROK_TOKEN = ""`. **Never commit or share your token.**
 5. Click **Runtime → Run all**. Wait a few minutes. The last cell keeps running because it is the server.
 6. Copy the printed ngrok URL.
-7. Open `stock_predictor_page.html` in your browser, paste the URL into **Backend URL** and click **Connect**.
+7. Open `index.html` in your browser, paste the URL into **Backend URL** and click **Connect**.
 8. Pick a stock, type or fetch the latest Open/High/Low/Close/Volume, and click **Predict tomorrow's trend**.
 
 
