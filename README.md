@@ -54,7 +54,7 @@ Beginner investors often ask one simple question: *Will this stock go up or down
 ## 💻 Web Application Preview
 
 <p align="center">
-  <img src="images/app-screenshot.jpg" alt="HTML Interface" width="850">
+  <img src="images/app-screenshot.png" alt="HTML Interface" width="850">
 </p>
 
 ---
