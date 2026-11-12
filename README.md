@@ -2,7 +2,7 @@
 
 > Predicting whether an NSE stock will close **UP** or **DOWN** on the next trading day using supervised machine learning, served through a Flask API and a web interface.
 
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/YOUR-USERNAME/stock-trend-predictor/blob/main/stock_trend_classifier.ipynb)
+[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/jivan-nirmaan/stock-trend-predictor/blob/main/stock_trend_classifier.ipynb)
 ![Python](https://img.shields.io/badge/Python-3.10+-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
@@ -12,11 +12,11 @@ Final-year project, B.E. Computer Science & Engineering (AI & ML), Chandigarh Un
 
 ## 🎯 Problem
 
-Beginner investors often ask one simple question: *will this stock go up or down tomorrow?* SEBI studies show that a large majority of individual F&O traders in India make net losses, so a careful, data-based way of reading trends is useful. This project builds a binary classifier for next-day direction and wraps it in a simple web app.
+Beginner investors often ask one simple question: *Will this stock go up or down tomorrow?* SEBI studies show that a large majority of individual F&O traders in India make net losses, so a careful, data-based way of reading trends is useful. This project builds a binary classifier for next-day direction and wraps it in a simple web app.
 
 ## 📊 Dataset
 
-- **Source:** Yahoo Finance (via `yfinance`)
+- **Source:** Yahoo Finance API (via the `yfinance` Python library)
 - **Stocks (8 NSE):** TCS, INFY, HDFCBANK, ICICIBANK, SBIN, RELIANCE, ITC, BHARTIARTL
 - **Size:** 1,984 daily OHLCV records covering one year (`indian_stocks_real.csv`)
 - **Target:** `1` if tomorrow's close > today's close, else `0`
@@ -28,7 +28,7 @@ Beginner investors often ask one simple question: *will this stock go up or down
 3. **Chronological 80:20 split by date** (no random split, so there is no future leakage)
 4. **Outlier clipping and scaling** fitted on training data only
 5. **11 classifiers compared** (Logistic Regression, KNN, Naive Bayes, Decision Tree, Random Forest, Extra Trees, Gradient Boosting, AdaBoost, SVM, MLP, XGBoost, LightGBM) against a majority-class baseline using `TimeSeriesSplit` cross-validation
-6. **Top 3 tuned** with `RandomizedSearchCV`, final model picked by cross-validated ROC-AUC (not test accuracy)
+6. **Models are tuned** with `RandomizedSearchCV`, final model picked by cross-validated ROC-AUC (not test accuracy)
 7. **Probability calibration** (temperature scaling) so the confidence shown to the user is honest
 8. **Flask API + HTML interface** with live data fetch from Yahoo Finance
 
@@ -43,15 +43,28 @@ Beginner investors often ask one simple question: *will this stock go up or down
 
 **Honest finding:** with strict time-based splitting and no leakage, next-day stock direction is very hard to predict from past prices alone. The model performs close to random guessing. The value of this project is the complete, leak-free pipeline, the fair model comparison and the working interface.
 
-## 🖼️ Screenshots
+## 🏗️ System Architecture
 
-| System flow | Web app |
-|---|---|
-| ![Flow](images/system-flow.png) | ![App](images/app-screenshot.png) |
+<p align="center">
+  <img src="images/system-flow.jpg" alt="System Architecture Flow" width="850">
+</p>
 
-| Confusion matrix | ROC curve |
-|---|---|
-| ![CM](images/confusion-matrix.png) | ![ROC](images/roc-curve.png) |
+---
+
+## 💻 Web Application Preview
+
+<p align="center">
+  <img src="images/app-screenshot.jpg" alt="HTML Interface" width="850">
+</p>
+
+---
+
+## 📊 Model Evaluation
+
+| Confusion Matrix | ROC Curve |
+| :---: | :---: |
+| <img src="images/confusion-matrix.jpg" alt="Confusion Matrix" width="400"> | <img src="images/roc-curve.jpg" alt="ROC Curve" width="400"> |
+| *Next-day direction classification on NSE test split* | *AUC score across 8 large-cap Indian stocks* |
 
 ## 📁 Repository structure
 
@@ -61,8 +74,6 @@ stock-trend-predictor/
 ├── stock_predictor_page.html      # Web interface
 ├── indian_stocks_real.csv         # Dataset
 ├── requirements.txt               # Python dependencies
-├── report/
-│   └── Project_Report_AI_04.pdf   # Full project report
 ├── images/                        # Screenshots used in this README
 └── README.md
 ```
@@ -80,7 +91,6 @@ The backend runs in Google Colab and the web page connects to it through an ngro
 7. Open `stock_predictor_page.html` in your browser, paste the URL into **Backend URL** and click **Connect**.
 8. Pick a stock, type or fetch the latest Open/High/Low/Close/Volume, and click **Predict tomorrow's trend**.
 
-To run locally instead of Colab: `pip install -r requirements.txt` and run the notebook cells in Jupyter.
 
 ## 🛠️ Tech stack
 
@@ -93,13 +103,12 @@ Python, pandas, NumPy, scikit-learn, XGBoost, LightGBM, matplotlib, seaborn, Plo
 - Deploy the API and page on a free cloud service (no Colab or ngrok needed)
 - Add alerts and a watchlist
 
-## 👥 Team
+## 👤 Author
 
-- Jivanjot Singh
-- Ansh Bagavan
-- Priyansh Thakur
-- Abhijeet
-- Prashant Chib
+**Jivanjot Singh** | [LinkedIn](https://linkedin.com/in/jivan-nirmaan) | [GitHub](https://github.com/jivan-nirmaan)
+
+Built a project for B.E. CSE (AI & ML), Chandigarh University, 2026.
+
 
 ## ⚠️ Disclaimer
 
